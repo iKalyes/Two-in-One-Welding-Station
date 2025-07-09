@@ -1,0 +1,16 @@
+{
+  "codename": "ASCII",
+  "ttf_path": "/assets/SarasaMonoSC-Bold.ttf",
+  "bin_path": "/assets/ui_font_ASCII.bin",
+  "c_path": "/assets/ui_font_ASCII.c",
+  "cfg_path": "/assets/ui_font_ASCII.fcfg",
+  "size": 16,
+  "bpp": 4,
+  "letters": 0,
+  "ranges": [
+    "0x20-0x7f"
+  ],
+  "symbols": "℃温度当前设置自定义加热曲线系统参数风速烙铁枪电最高低待机休眠时间校准",
+  "customparams": "--no-compress --no-prefilter",
+  "uploaded": false
+}

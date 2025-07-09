@@ -1,0 +1,77 @@
+#######################################
+# Syntax Coloring Map For FT6336U
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+FT6336U												KEYWORD1
+DEVICE_MODE_Enum	    				KEYWORD1
+G_MODE_Enum	    							KEYWORD1
+TouchStatusEnum	    					KEYWORD1
+TouchPointType	    					KEYWORD1
+FT6336U_TouchPointType	    	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin													KEYWORD2
+read_device_type							KEYWORD2
+read_device_mode	    				KEYWORD2
+write_device_mode						  KEYWORD2
+read_gesture_id							  KEYWORD2
+read_td_status					      KEYWORD2
+read_touch_number							KEYWORD2
+read_touch1_x								  KEYWORD2
+read_touch1_y									KEYWORD2
+read_touch1_event							KEYWORD2
+read_touch1_id								KEYWORD2
+read_touch1_weight						KEYWORD2
+read_touch1_misc							KEYWORD2
+read_touch2_x						      KEYWORD2
+read_touch2_y	                KEYWORD2
+read_touch2_event							KEYWORD2
+read_touch2_id		            KEYWORD2
+read_touch2_weight				    KEYWORD2
+read_touch2_misc						  KEYWORD2
+write_power_mode							KEYWORD2
+write_monitor_mode_period		  KEYWORD2
+disable_face_dec_mode				  KEYWORD2
+read_touch_threshold					KEYWORD2
+read_filter_coefficient				KEYWORD2
+read_ctrl_mode								KEYWORD2
+write_ctrl_mode								KEYWORD2
+read_time_period_enter_monitor		KEYWORD2
+write_time_period_enter_monitor		KEYWORD2
+read_active_rate							KEYWORD2
+read_monitor_rate							KEYWORD2
+read_radian_value							KEYWORD2
+write_radian_value						KEYWORD2
+read_offset_left_right				KEYWORD2
+write_offset_left_right				KEYWORD2
+read_offset_up_down						KEYWORD2
+write_offset_up_down					KEYWORD2
+read_distance_left_right			KEYWORD2
+write_distance_left_right			KEYWORD2
+read_distance_up_down					KEYWORD2
+write_distance_up_down				KEYWORD2
+read_distance_zoom						KEYWORD2
+write_distance_zoom						KEYWORD2
+read_library_version					KEYWORD2
+read_chip_id									KEYWORD2
+read_g_mode									  KEYWORD2
+write_g_mode									KEYWORD2
+read_pwrmode									KEYWORD2
+read_firmware_id							KEYWORD2
+read_focaltech_id							KEYWORD2
+read_release_code_id					KEYWORD2
+read_state									  KEYWORD2
+scan									        KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

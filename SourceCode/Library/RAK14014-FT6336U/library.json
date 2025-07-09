@@ -1,0 +1,31 @@
+{
+	"name": "RAK14014-FT6336U",
+	"version": "1.0.1",
+	"keywords": [
+		"TFT",
+		"RAKWireless",
+		"WisBlock",
+		"RAK14014"
+	],
+	"description": "RAKWireless library for the RAK14014",
+	"frameworks": [
+		"arduino"
+	],
+	"platforms": [
+		"*"
+	],
+	"license": "MIT",
+	"authors": [
+		{
+			"email": "nero.du@rakwireless.com",
+			"url": "https://rakwireless.com",
+			"maintainer": true,
+			"name": "Nero"
+		}
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/RAKWireless/RAK14014-FT6336U"
+	},
+	"homepage": "https://rakwireless.com"
+}
