@@ -1,4 +1,4 @@
-# ChargingStation3.0
+# Two-in-One Welding Station
 Two-in-One Welding Station Source File Repo.  
 二合一焊台源文件仓库
 项目发布地址：https://oshwhub.com/ikalyes/tong-yong-han-tai  
