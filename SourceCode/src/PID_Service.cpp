@@ -11,6 +11,10 @@ QuickPID Soldering_PID(&soldering_temp_float, &Soldering_DutyCycle, &soldering_t
 extern DigitRoller* soldering_temp_display;
 extern DigitRoller* heatgun_temp_display;
 
+// 添加全局变量用于温度读取时序管理
+static unsigned long last_temp_read_time = 0;
+static unsigned long heatgun_last_temp_read_time = 0;
+
 void Soldering_PID_Compute_Init()
 {
     Soldering_PID.SetOutputLimits(0, SolderingMaxPower);
@@ -221,7 +225,23 @@ void Soldering_PID_Compute()
             
         case PID_READ_TEMP: {
             // 使用块作用域减少变量生命周期
-            const uint8_t sensor_status = MAX6675_Read_Soldering_Status();
+            uint8_t sensor_status = 0;
+            int current_temp = 0;
+            
+            // 互斥锁保护温度读取
+            if (!temp_read_mutex) {
+                temp_read_mutex = true;
+                sensor_status = MAX6675_Read_Soldering_Status();
+                
+                if (sensor_status == 0) {
+                    current_temp = (int)MAX6675_Read_Soldering_Temperature();
+                }
+                temp_read_mutex = false;
+            } else {
+                // 如果互斥锁被占用，使用上次读取的温度值
+                sensor_status = 0; // 假设传感器正常
+                current_temp = Soldering_Temp; // 使用上次的温度值
+            }
             
             if (sensor_status != 0) {
                 // 传感器异常 - 立即处理
@@ -239,8 +259,7 @@ void Soldering_PID_Compute()
                 break;
             }
             
-            // 传感器正常，读取温度
-            const int current_temp = (int)MAX6675_Read_Soldering_Temperature();
+            // 传感器正常，更新温度
             Soldering_Temp = current_temp;
             
             // 安全检查 - 使用常量避免重复计算
@@ -310,8 +329,12 @@ void Soldering_PID_Compute()
             
             // 每200ms读取一次温度
             if (current_time - standby_state.sleep_read_time >= 200) {
-                if (MAX6675_Read_Soldering_Status() == 0) {
-                    Soldering_Temp = (int)MAX6675_Read_Soldering_Temperature();
+                if (!temp_read_mutex) {
+                    temp_read_mutex = true;
+                    if (MAX6675_Read_Soldering_Status() == 0) {
+                        Soldering_Temp = (int)MAX6675_Read_Soldering_Temperature();
+                    }
+                    temp_read_mutex = false;
                 }
                 standby_state.sleep_read_time = current_time;
             }
@@ -394,6 +417,19 @@ void Heatgun_PID_Compute()
         heatgun_buzzer_state.temperature_reached_played = false; 
         heatgun_internal_state.was_disabled = true; 
         return;
+    }
+
+    // --- 热风枪温度读取 - 每200ms读取一次，独立于状态机 ---
+    if (current_time - heatgun_last_temp_read_time >= 200) {
+        if (!temp_read_mutex) {
+            temp_read_mutex = true;
+            Heatgun_Status = MAX6675_Read_Heatgun_Status();
+            if (Heatgun_Status == 0) {
+                Heatgun_Temp = (int)MAX6675_Read_Heatgun_Temperature();
+            }
+            temp_read_mutex = false;
+        }
+        heatgun_last_temp_read_time = current_time;
     }
 
     // --- 获取最新的消抖后的休眠信号 ---

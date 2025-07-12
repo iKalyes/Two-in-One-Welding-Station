@@ -1,5 +1,9 @@
 #include <variables.h> 
 
+String Version = "Ver: 1.3 - 250712 Release"; // 固件版本号
+
+bool temp_read_mutex = false; // 互斥锁，防止同时读取温度
+
 bool Soldering_Enabled = false;
 
 uint16_t SolderingTargetTemp = 100;

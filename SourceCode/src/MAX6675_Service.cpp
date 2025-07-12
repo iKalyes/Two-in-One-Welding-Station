@@ -52,20 +52,40 @@ void MAX6675_Read_Task()
         unsigned long current_time = millis();
         
         if (current_time - last_temp_read_time >= 200) {
-            Soldering_Status = MAX6675_Read_Soldering_Status();
-            Soldering_Temp = (int)MAX6675_Read_Soldering_Temperature();
-            last_temp_read_time = current_time;
+            // 互斥锁保护温度读取
+            if (!temp_read_mutex) {
+                temp_read_mutex = true;
+                Soldering_Status = MAX6675_Read_Soldering_Status();
+                if (Soldering_Status == 0) {
+                    Soldering_Temp = (int)MAX6675_Read_Soldering_Temperature();
+                }
+                temp_read_mutex = false;
+                last_temp_read_time = current_time;
+            }
+            // 如果互斥锁被占用，跳过本次读取，保持上次的温度值
         }
     }
+
+    if(Heatgun_Enabled == false)
+    {
         // 添加静态变量用于控制200ms间隔读取温度
-        static unsigned long last_temp_read_time = 0;
+        static unsigned long last_heatgun_temp_read_time = 0;
         unsigned long current_time = millis();
         
-        if (current_time - last_temp_read_time >= 200) {
-            Heatgun_Status = MAX6675_Read_Heatgun_Status();
-            Heatgun_Temp = (int)MAX6675_Read_Heatgun_Temperature();
-            last_temp_read_time = current_time;
+        if (current_time - last_heatgun_temp_read_time >= 200) {
+            // 互斥锁保护温度读取
+            if (!temp_read_mutex) {
+                temp_read_mutex = true;
+                Heatgun_Status = MAX6675_Read_Heatgun_Status();
+                if (Heatgun_Status == 0) {
+                    Heatgun_Temp = (int)MAX6675_Read_Heatgun_Temperature();
+                }
+                temp_read_mutex = false;
+                last_heatgun_temp_read_time = current_time;
+            }
+            // 如果互斥锁被占用，跳过本次读取，保持上次的温度值
         }
+    }
 }
 
 void MAX6675_Display_Task(lv_timer_t *timer)

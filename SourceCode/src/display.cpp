@@ -127,7 +127,7 @@ void display_init()
     lv_indev_drv_register( &indev_drv );
 
     ui_init();
-    lv_label_set_text(ui_FWVersion, "FW/Ver: 1.2 - 250620 Release"); // 设置固件版本信息
+    lv_label_set_text(ui_FWVersion, Version.c_str()); // 设置固件版本信息
     int display_time_start = millis();
     while ( display_time_start + 200 > millis() ) 
     {

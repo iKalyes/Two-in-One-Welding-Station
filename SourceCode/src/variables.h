@@ -3,6 +3,10 @@
 
 #include <Arduino.h>
 
+extern String Version;
+
+extern bool temp_read_mutex; // 互斥锁，防止同时读取温度
+
 extern bool Soldering_Enabled;
 
 extern uint16_t SolderingTargetTemp;
