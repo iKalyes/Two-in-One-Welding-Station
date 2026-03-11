@@ -1,16 +1,16 @@
 {
   "codename": "ASCII48",
   "ttf_path": "/assets/SarasaMonoSC-Bold.ttf",
-  "bin_path": "/assets/ui_font_ASCII48.bin",
-  "c_path": "/assets/ui_font_ASCII48.c",
-  "cfg_path": "/assets/ui_font_ASCII48.fcfg",
+  "bin_path": "/assets\\ui_font_ASCII48.bin",
+  "c_path": "/assets\\ui_font_ASCII48.c",
+  "cfg_path": "/assets\\ui_font_ASCII48.fcfg",
   "size": 48,
   "bpp": 4,
   "letters": 0,
   "ranges": [
     "0x20-0x7f"
   ],
-  "symbols": "℃",
+  "symbols": "℃屏幕请选择类型",
   "customparams": "--no-compress --no-prefilter",
   "uploaded": false
 }

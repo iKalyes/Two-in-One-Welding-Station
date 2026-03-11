@@ -8,8 +8,6 @@ extern String Version;
 extern bool Display_Type;
 extern bool Display_Type_Configured;
 
-extern bool temp_read_mutex; // 互斥锁，防止同时读取温度
-
 extern bool Soldering_Enabled;
 
 extern uint16_t SolderingTargetTemp;
@@ -49,5 +47,26 @@ extern float Soldering_KD;
 extern float Heatgun_KP;
 extern float Heatgun_KI;
 extern float Heatgun_KD;
+
+// PID占空比平滑参数（误差阈值，单位: 摄氏度）
+extern uint16_t DutySmoothErrHigh;
+extern uint16_t DutySmoothErrMid;
+extern uint16_t DutySmoothErrLow;
+
+// PID占空比平滑参数（EMA系数，范围: 0.0~1.0）
+extern float DutySmoothAlphaHigh;
+extern float DutySmoothAlphaMid;
+extern float DutySmoothAlphaLow;
+extern float DutySmoothAlphaBase;
+
+// 电烙铁占空比斜率限制（每次PID计算允许变化的最大占空比）
+extern float SolderingDutyStepUpHighErr;
+extern float SolderingDutyStepUpMidErr;
+extern float SolderingDutyStepUpLowErr;
+extern float SolderingDutyStepUpBase;
+extern float SolderingDutyStepDownHighErr;
+extern float SolderingDutyStepDownMidErr;
+extern float SolderingDutyStepDownLowErr;
+extern float SolderingDutyStepDownBase;
 
 #endif

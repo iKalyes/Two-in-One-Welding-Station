@@ -1,16 +1,16 @@
 {
   "codename": "ASCII19",
   "ttf_path": "/assets/SarasaMonoSC-Bold.ttf",
-  "bin_path": "/assets/ui_font_ASCII19.bin",
-  "c_path": "/assets/ui_font_ASCII19.c",
-  "cfg_path": "/assets/ui_font_ASCII19.fcfg",
+  "bin_path": "/assets\\ui_font_ASCII19.bin",
+  "c_path": "/assets\\ui_font_ASCII19.c",
+  "cfg_path": "/assets\\ui_font_ASCII19.fcfg",
   "size": 19,
   "bpp": 4,
   "letters": 0,
   "ranges": [
     "0x20-0x7f"
   ],
-  "symbols": " 电烙铁热风枪",
+  "symbols": "电烙铁热风枪加台保存设置系统初始化中恒温模式曲线自定显示屏成功偶状态正常错误编码器在载主屏幕完控件组失败为空",
   "customparams": "--no-compress --no-prefilter",
   "uploaded": false
 }

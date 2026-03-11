@@ -11,7 +11,7 @@ uint32_t _ui_local_style_count = 0;
 
 inline void ui_object_set_local_style_property
 (lv_obj_t* object_p, lv_style_selector_t selector, lv_style_prop_t property, ui_style_variable_t value ) {
-    if ( object_p!=NULL && lv_obj_is_valid(object_p) ) {
+    if ( object_p!=NULL /*&& lv_obj_is_valid(object_p)*/ ) {
         lv_obj_set_local_style_prop( object_p, property, _ui_style_value_convert( property, value ), selector );
     }
 }

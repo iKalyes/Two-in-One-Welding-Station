@@ -1,16 +1,16 @@
 {
   "codename": "ASCII32",
   "ttf_path": "/assets/SarasaMonoSC-Bold.ttf",
-  "bin_path": "/assets/ui_font_ASCII32.bin",
-  "c_path": "/assets/ui_font_ASCII32.c",
-  "cfg_path": "/assets/ui_font_ASCII32.fcfg",
+  "bin_path": "/assets\\ui_font_ASCII32.bin",
+  "c_path": "/assets\\ui_font_ASCII32.c",
+  "cfg_path": "/assets\\ui_font_ASCII32.fcfg",
   "size": 32,
   "bpp": 4,
   "letters": 0,
   "ranges": [
     "0x20-0x7f"
   ],
-  "symbols": "℃温度桌面二合一焊台",
+  "symbols": "℃温度桌面二合一焊台屏幕请选择类型",
   "customparams": "--no-compress --no-prefilter",
   "uploaded": false
 }

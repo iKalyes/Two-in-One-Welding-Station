@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Size: 48 px
  * Bpp: 4
- * Opts: --bpp 4 --size 48 --font E:/Desktop-Heating-Station/LVGLProject/assets/SarasaMonoSC-Bold.ttf -o E:/Desktop-Heating-Station/LVGLProject/assets\ui_font_ASCII48.c --format lvgl -r 0x20-0x7f --symbols ℃屏幕请选择类型 --no-compress --no-prefilter
+ * Opts: --bpp 4 --size 48 --font E:/Two-in-One-Welding-Station/LVGLProject/assets/SarasaMonoSC-Bold.ttf -o E:/Two-in-One-Welding-Station/LVGLProject/assets\ui_font_ASCII48.c --format lvgl -r 0x20-0x7f --symbols ℃屏幕请选择类型 --no-compress --no-prefilter
  ******************************************************************************/
 
 #include "../ui.h"

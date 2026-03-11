@@ -5,9 +5,11 @@
 #include <stdio.h> // 用于 sprintf
 #include <lvgl.h>
 #include <ui/ui.h>
-#include <display.h>
-#include <lvgl_group.h>
 
+#include <Display.h>
+#include <LVGL_Group.h>
+
+#include <Flash_Service.h>
 #include <INA226_Service.h>
 #include <TMP102_Service.h>
 #include <MAX6675_Service.h>
@@ -15,7 +17,11 @@
 #include <GPIO_Service.h>
 #include <PID_Service.h>
 
-#include <variables.h>
+#include <Variables.h>
+
+// FreeRTOS 统一包含
+#include <FreeRTOS.h>
+#include <task.h>
 
 void System_Init();
 

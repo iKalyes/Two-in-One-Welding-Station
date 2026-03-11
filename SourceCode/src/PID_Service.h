@@ -2,13 +2,16 @@
 #define _PID_SERVICE_H
 
 #include <Arduino.h>
-#include <QuickPID.h>
-#include <GPIO_Service.h>
-#include <MAX6675_Service.h>
-#include "variables.h"
 #include <lvgl.h>
 #include "ui/ui.h"
-#include "numberflow.h"
+
+#include <QuickPID.h>
+
+
+#include <GPIO_Service.h>
+#include <MAX6675_Service.h>
+#include <Variables.h>
+
 
 // 创建float类型的中间变量用于PID计算
 static float soldering_temp_float = 0.0f;
@@ -112,6 +115,19 @@ const int HEATGUN_TEMP_REACHED_THRESHOLD = 3; // 温度到达提示的阈值（+
 const uint16_t HEATGUN_SLEEP_COOL_DOWN_TEMP_STAGE1 = 150; // 新增：冷却第一阶段阈值
 const uint16_t HEATGUN_SLEEP_COOL_DOWN_TEMP_STAGE2 = 100; // 重命名/明确 HEATGUN_SLEEP_COOL_DOWN_TEMP
 const uint16_t HEATGUN_SLEEP_COOL_DOWN_TEMP_STAGE3 = 60;  // 新增：冷却第三阶段阈值 (风扇关闭)
+
+enum PIDUITextColor : uint8_t {
+    PID_UI_TEXT_WHITE = 0,
+    PID_UI_TEXT_BLUE = 1,
+    PID_UI_TEXT_BLACK = 2,
+};
+
+extern volatile uint8_t g_soldering_ui_color_req;
+extern volatile uint8_t g_heatgun_ui_color_req;
+extern volatile uint32_t g_soldering_switch_off_req_seq;
+extern volatile uint32_t g_heatgun_switch_off_req_seq;
+
+void PID_UI_Sync_Task();
 
 void Heatgun_PID_Compute_Init();
 void HeatgunPID_Update_Tunings(float Kp, float Ki, float Kd);

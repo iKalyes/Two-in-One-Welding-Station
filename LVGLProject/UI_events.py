@@ -258,3 +258,7 @@ def CoolingOFF(event_struct):
 def PowerOnInit(event_struct):
     return
 
+
+def SolderingPowerLimit(event_struct):
+    return
+
